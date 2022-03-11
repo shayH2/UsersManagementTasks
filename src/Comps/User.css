@@ -1,0 +1,66 @@
+h3 {
+  color: green;
+}
+
+input[type="button"] {
+  background-color: yellow;
+}
+
+input[type="text"] {
+  background-color: white;
+}
+
+.MyClass {
+  color: red;
+  background-color: purple;
+}
+
+.user {
+  border-color: blue;
+  border-width: 1px;
+  border-style: solid;
+  margin-top: 3px;
+  border-radius: 11px;
+}
+
+.layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  color: #fff;
+  opacity: 0.8;
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  top: 0px;
+  padding: 0 30px;
+  transition: 0.5s;
+}
+
+.user-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+  height: 70px;
+  top: 0px;
+  padding: 0 30px;
+  transition: 0.5s;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.button-click-true {
+    background-color: aqua;
+}
+
+.button-over-true {
+    background-color: pink;
+}
