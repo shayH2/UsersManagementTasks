@@ -9,7 +9,7 @@ const getPosts = (id) => {
 };
 
 const getTodos = (id) => {
-  return axios.get(`http://jsonplaceholder.typicode.com/todos/${id}`);
+  return axios.get(`http://jsonplaceholder.typicode.com/users/${id}/todos`);
 };
 
 const putUser = () => {

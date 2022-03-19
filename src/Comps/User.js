@@ -1,14 +1,21 @@
 import { useEffect } from "react";
 import { React, useState } from "react";
-import OtherDataComp from "./AddressData";
+import AddressDataComp from "./AddressData";
 import ManagemetTodosPostsComp from "./Tasks/ManagemetTodosPosts";
 import "./User.css";
 import Utils from "./Utils";
 
 const UserComp = (props) => {
-  const [displayOtherDataOnOver, setDisplayOtherDataOnOver] = useState(false);
+  const [displayAddressDataOnOver, setDisplayAddressDataOnOver] =
+    useState(false);
 
-  const [displayOtherDataOnClick, setDisplayOtherDataOnClick] = useState(false);
+  const [displayAddressDataOnClick, setDisplayAddressDataOnClick] =
+    useState(false);
+
+  const [
+    displayTodosAndPostysDataOnClick,
+    setDisplayTodosAndPostysDataOnClick,
+  ] = useState(false);
 
   const [name, setName] = useState(props.userData.name);
 
@@ -27,15 +34,15 @@ const UserComp = (props) => {
   };
 
   const onMouseOverData = () => {
-    setDisplayOtherDataOnOver(true);
+    setDisplayAddressDataOnOver(true);
   };
 
   const onMouseLeaveData = () => {
-    setDisplayOtherDataOnOver(false);
+    setDisplayAddressDataOnOver(false);
   };
 
   const toggleOtherData = () => {
-    setDisplayOtherDataOnClick(!displayOtherDataOnClick);
+    setDisplayAddressDataOnClick(!displayAddressDataOnClick);
   };
 
   const changeName = (e) => {
@@ -62,8 +69,8 @@ const UserComp = (props) => {
     console.log(otherData);
   };
 
-  const canDisplayOtherData = () =>
-    displayOtherDataOnClick || displayOtherDataOnOver;
+  const canDisplayAddressData = () =>
+    displayAddressDataOnClick || displayAddressDataOnOver;
 
   const id = props.userData.id;
 
@@ -76,9 +83,20 @@ const UserComp = (props) => {
   };
 
   const onClickId = () => {
-    alert("dsdsvdsv");
     console.log(otherData);
+
+    setDisplayTodosAndPostysDataOnClick(!displayTodosAndPostysDataOnClick);
   };
+
+  let fromChild = null;
+
+  const setFromChild = (m) => {
+    fromChild = m;
+  };
+
+  useEffect(() => {
+    //Do something on every names change
+  }, [displayTodosAndPostysDataOnClick]);
 
   return (
     <div className={canDisplay() ? "user" : "invisible"}>
@@ -91,21 +109,29 @@ const UserComp = (props) => {
       Email : <input type="text" value={email} onChange={changeEmail} /> <br />
       <div
         className={
-          displayOtherDataOnClick || displayOtherDataOnOver
+          displayAddressDataOnClick || displayAddressDataOnOver
             ? "visible"
             : "invisible"
         }
       >
-        <OtherDataComp userData={props.userData} />
-        <ManagemetTodosPostsComp userData={props.userData} />
+        <AddressDataComp userData={props.userData} />
+      </div>
+      <div
+        className={displayTodosAndPostysDataOnClick ? "visible" : "invisible"}
+      >
+        <ManagemetTodosPostsComp
+          userData={props.userData}
+          display={displayTodosAndPostysDataOnClick}
+          //setChildMethod={setFromChild}
+        />
       </div>
       <div className="user-buttons">
         <div>
           <input
             className={
-              displayOtherDataOnClick
+              displayAddressDataOnClick
                 ? "button-click-true"
-                : displayOtherDataOnOver
+                : displayAddressDataOnOver
                 ? "button-over-true"
                 : ""
             }
@@ -114,7 +140,7 @@ const UserComp = (props) => {
             onMouseOver={onMouseOverData}
             onMouseLeave={onMouseLeaveData}
             onClick={toggleOtherData}
-            Value="Other data"
+            value="Other data"
           />
         </div>
         <div>

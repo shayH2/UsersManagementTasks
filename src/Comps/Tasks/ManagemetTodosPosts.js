@@ -1,24 +1,35 @@
 import { useEffect } from "react";
 import { React, useState } from "react";
 import Utils from "../Utils";
+import TaskComp from "./Task";
 
 const ManagemetTodosPostsComp = (props) => {
-  const [tasks, setTasks] = useState([]);
+  const [todos, setTodos] = useState([]);
   const [posts, setPosts] = useState([]);
 
-  const tasks0 = Utils.getTodos(props.userData.id);
+  useEffect(async () => {
+    if (true) {
+      //props.display) {
+      const todos0 = await Utils.getTodos(props.userData.id);
 
-  setTasks(tasks0);
+      setTodos(todos0.data);
 
-  setPosts(posts0);
+      //const posts0 = await Utils.getPosts(props.userData.id);
 
-  const posts0 = Utils.getPosts(props.userData.id);
+      //setPosts(posts0);
+    }
+  }, []);
 
   return (
     <div>
       <h3>ManagemetTodosPosts comp</h3>
-      {JSON.stringify(tasks)}
-      {JSON.stringify(posts)}
+      {todos.map((item, index) => {
+        return <TaskComp key={index} userTask={item} />;
+      })}
+
+      {posts.map((item, index) => {
+        return <TaskComp key={index} userTask={item} />;
+      })}
     </div>
   );
 };

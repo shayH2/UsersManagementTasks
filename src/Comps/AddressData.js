@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 
-const OtherDataComp = (props) => {
+const AddressDataComp = (props) => {
   const [street, setStreet] = useState(props.userData.address.street);
 
   const [city, setCity] = useState(props.userData.address.city);
@@ -42,7 +42,7 @@ const OtherDataComp = (props) => {
 
   return (
     <div style={{ backgroundColor: "orange" }}>
-      <h3>OtherDataComp</h3>
+      <h3>AddressDataComp</h3>
       Street: <input type="text" value={street} onChange={changeStreet} />
       <br />
       City : <input type="text" value={city} onChange={changeCity} /> <br />
@@ -56,4 +56,4 @@ const OtherDataComp = (props) => {
   );
 };
 
-export default OtherDataComp;
+export default AddressDataComp;

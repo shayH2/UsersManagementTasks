@@ -15,13 +15,13 @@ function UsersComp() {
     let users10 = resp.data.slice(0, 10);
 
     setUsers(users10);
-    console.table(resp.data);
+    //console.table(resp.data);
 
-    resp = await utils.getTodos();
-    setTodosTitles(resp.data);
+    //resp = await utils.getTodos();
+    //setTodosTitles(resp.data);
 
-    resp = await utils.getPosts();
-    setPostsTitles(resp.data);
+    //resp = await utils.getPosts();
+    //setPostsTitles(resp.data);
   }, []);
 
   //if (Array.isArray(resp.data))
